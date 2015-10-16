@@ -1,0 +1,6 @@
+C:\Users\Benjamin\Desktop\apps\csharp-study\hello\hello\bin\Debug\hello.exe.config
+C:\Users\Benjamin\Desktop\apps\csharp-study\hello\hello\bin\Debug\hello.exe
+C:\Users\Benjamin\Desktop\apps\csharp-study\hello\hello\bin\Debug\hello.pdb
+C:\Users\Benjamin\Desktop\apps\csharp-study\hello\hello\obj\Debug\hello.csprojResolveAssemblyReference.cache
+C:\Users\Benjamin\Desktop\apps\csharp-study\hello\hello\obj\Debug\hello.exe
+C:\Users\Benjamin\Desktop\apps\csharp-study\hello\hello\obj\Debug\hello.pdb
