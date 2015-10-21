@@ -27,10 +27,15 @@ namespace Grades
             //Double and float types
             //Float - 7 digit precision
             //Double - 14 digit precision
-            grades.Add(grade);
+
+            if(grade >= 0 && grade <= 100)
+            {
+                grades.Add(grade);
+            }
+      
         }
 
-        List<float> grades;
+        private List<float> grades;
 
 
     }
