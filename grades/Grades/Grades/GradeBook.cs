@@ -7,7 +7,13 @@ using System.Threading.Tasks;
 namespace Grades
 {
     class GradeBook
-    {   
+    {
+
+        public GradeBook()
+        {
+            grades = new List<float>();
+        }
+
         //Class members can be either:
         //1 . State - data to work with inside class (grades here)
         //grades user entered
