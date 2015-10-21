@@ -14,7 +14,7 @@ namespace Grades
             book.AddGrade(92);
             book.AddGrade(34);
 
-            GradeBook book2 = new GradeBook();
+            GradeBook book2 = book;
             book2.AddGrade(75);
         }
     }
