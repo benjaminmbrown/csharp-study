@@ -8,6 +8,9 @@ namespace Grades
 {
     class GradeBook
     {
+        //can access with GradeBook.MaximumGrade
+        public static float MinimumGrade = 0;
+        public static float MaximumGrade = 100;
 
         public GradeBook()
         {
