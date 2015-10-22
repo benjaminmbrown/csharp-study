@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Speech.Synthesis;
 
 namespace Grades
 {
@@ -21,6 +22,9 @@ namespace Grades
         
         static void Main(string[] args)
         {
+
+            SpeechSynthesizer synth = new SpeechSynthesizer();
+            synth.Speak("Referencing an assembly for speech synthesis");
 
             Immutable();
 
