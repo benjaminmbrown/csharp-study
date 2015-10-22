@@ -22,12 +22,48 @@ namespace Grades
         static void Main(string[] args)
         {
 
+            Immutable();
+
+            PassByValueAndRef();
+
+            ClassesAndTypes();
+
+        }
+
+        private static void ClassesAndTypes()
+        {
+            GradeBook book = new GradeBook();
+            book.AddGrade(92);
+            book.AddGrade(34);
+            book.AddGrade(75);
+
+            GradeStatistics stats = book.ComputeStatistics();
+
+            Console.WriteLine("Avg:" + stats.AverageGrade);
+            Console.WriteLine("Lowest" + stats.LowestGrade);
+            Console.WriteLine("Highest" + stats.HighestGrade);
+        }
+
+        private static void Immutable()
+        {
+
+            string name = " BEN ";
+            string trimmedName = name.Trim();
+            Console.WriteLine(trimmedName);
+
+            DateTime date = DateTime.Now; //or new DateTime(2014,1,1)
+            date = date.AddDays(3);
+            Console.WriteLine(date);
+
             string name1 = "Ben";
             string name2 = "ben";
 
             bool areEqual = name1.Equals(name2, StringComparison.CurrentCultureIgnoreCase);
             Console.WriteLine(areEqual);
+        }
 
+        private static void PassByValueAndRef()
+        {
             GradeBook g1 = new GradeBook();
             GradeBook g2 = g1;
 
@@ -39,24 +75,10 @@ namespace Grades
             Console.WriteLine(g2.Name);
 
             int x1 = 4;
-     
+
             IncrementANumber(x1);
 
             Console.WriteLine(x1);
-
-
-
-            //GradeBook book = new GradeBook();
-            //book.AddGrade(92);
-            //book.AddGrade(34);
-            //book.AddGrade(75);
-
-            //GradeStatistics stats = book.ComputeStatistics();
-
-            //Console.WriteLine("Avg:" + stats.AverageGrade);
-            //Console.WriteLine("Lowest" + stats.LowestGrade);
-            //Console.WriteLine("Highest" + stats.HighestGrade);
-
         }
     }
 }
