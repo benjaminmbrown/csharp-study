@@ -13,11 +13,16 @@ namespace Grades
             GradeBook g1 = new GradeBook();
             GradeBook g2 = g1;
 
-            g1 = new GradeBook();
-
             g1.Name = "Ben's Book";
 
             Console.WriteLine(g2.Name);
+
+            int x1 = 4;
+            int x2 = x1;
+
+            x1 = 100;
+
+            Console.WriteLine(x2);
 
             //GradeBook book = new GradeBook();
             //book.AddGrade(92);
