@@ -9,6 +9,32 @@ namespace Grades
 {
     class Program
     {
+       
+        static void Main(string[] args)
+        {
+
+            float floatNum = 34f;
+            int intNum = 345;
+
+            WriteAsBytes(intNum);
+            WriteAsBytes(floatNum);
+
+            WriteNames("Ben", "John", "Thom");
+
+            SynthesizeSpeech();
+
+            Immutable();
+
+            PassByValueAndRef();
+
+            ClassesAndTypes();
+
+            Arrays();
+
+            WriteAsBytes(2213);
+
+        }
+
         static void GiveBookAName(GradeBook book)
         {
             book.Name = "The Grade Book";
@@ -19,21 +45,52 @@ namespace Grades
             number += 1;
 
         }
-        
-        static void Main(string[] args)
+
+        private static void SynthesizeSpeech()
         {
-
             SpeechSynthesizer synth = new SpeechSynthesizer();
+            Console.WriteLine("Speaking now");
             synth.Speak("Referencing an assembly for speech synthesis");
+            Console.WriteLine("Completed introductory speech");
+        }
 
-            Immutable();
+        private static void WriteAsBytes(int value)
+        {
+            byte[] bytes = BitConverter.GetBytes(value);
 
-            PassByValueAndRef();
+            WriteByteArray(bytes);
+        }
 
-            ClassesAndTypes();
+        //Overloaded method with float type
+        private static void WriteAsBytes(float value)
+        {
+            byte[] bytes = BitConverter.GetBytes(value);
+            WriteByteArray(bytes);
+        }
 
-            Arrays();
+        private static void WriteByteArray(byte[] bytes)
+        {
+            WriteBreakingBar();
+            foreach (byte b in bytes)
+            {
+                Console.WriteLine("0x{0:X} {2} {1} ", b, "One", "3ete");
+            }
+            WriteBreakingBar();
+        }
 
+        private static void WriteNames(params string[] names)
+        {
+            WriteBreakingBar();
+            foreach (string name in names)
+            {
+                Console.WriteLine(name);
+            }
+            WriteBreakingBar();
+
+        }
+        private static void WriteBreakingBar()
+        {
+            Console.WriteLine("-----------");
         }
 
         private static void Arrays()
