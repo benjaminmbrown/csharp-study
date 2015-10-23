@@ -21,6 +21,8 @@ namespace Grades
 
             WriteNames("Ben", "John", "Thom");
 
+
+
             SynthesizeSpeech();
 
             Immutable();
@@ -125,11 +127,14 @@ namespace Grades
         private static void ClassesAndTypes()
         {
             GradeBook book = new GradeBook();
+            //or default value     GradeBook book = new GradeBook(string name ="Default Book");
             book.AddGrade(92);
             book.AddGrade(34);
             book.AddGrade(75);
 
             GradeStatistics stats = book.ComputeStatistics();
+
+            WriteNames(book.Name);
 
             Console.WriteLine("Avg:" + stats.AverageGrade);
             Console.WriteLine("Lowest" + stats.LowestGrade);

@@ -13,7 +13,15 @@ namespace Grades
         public static float MaximumGrade = 100;
 
         public GradeBook()
+            :this("no name")//calls override method with default value
         {
+            grades = new List<float>();
+        }
+
+
+        public GradeBook(string name)
+        {
+            Name = name;
             grades = new List<float>();
         }
 
@@ -60,7 +68,19 @@ namespace Grades
       
         }
 
-        public string Name;
+        private string _name;
+
+        public string Name
+        {
+            get { return _name.ToUpper()}
+            set { //prevent empty string here
+                if (!String.IsNullOrEmpty(value))
+                {
+                    _name = value;
+                }
+            }
+        }
+
         private List<float> grades;
 
 
