@@ -20,8 +20,7 @@ namespace Grades
             WriteAsBytes(floatNum);
 
             WriteNames("Ben", "John", "Thom");
-
-
+            
 
             SynthesizeSpeech();
 
@@ -34,6 +33,8 @@ namespace Grades
             Arrays();
 
             WriteAsBytes(2213);
+
+            exampleDelegate();
 
         }
 
@@ -139,6 +140,45 @@ namespace Grades
             Console.WriteLine("Avg:" + stats.AverageGrade);
             Console.WriteLine("Lowest" + stats.LowestGrade);
             Console.WriteLine("Highest" + stats.HighestGrade);
+        }
+
+        private static void exampleDelegate()
+        {
+            Console.WriteLine("Starting Delegate example");
+            GradeBook book = new GradeBook();
+     
+            book.AddGrade(92);
+            book.AddGrade(34);
+            book.AddGrade(75);
+
+            GradeStatistics stats = book.ComputeStatistics();
+
+            //using delegate - this will later be triggered any time the name changes later.
+            book.NameChanged = new NameChangedDelegate(OnNameChanged);
+
+            //alternate method : multi cast delegate
+            //multiple subscribers to execute when the event occurs
+            book.NameChanged += OnNameChanged;
+            book.NameChanged += OnNameChanged2;
+
+
+            book.Name = "changed name";
+
+            WriteNames(book.Name);
+
+            Console.WriteLine("Avg:" + stats.AverageGrade);
+            Console.WriteLine("Lowest" + stats.LowestGrade);
+            Console.WriteLine("Highest" + stats.HighestGrade);
+        }
+
+        private static void OnNameChanged2(string oldValue, string newValue)
+        {
+            Console.WriteLine("+++");
+        }
+
+        public static void OnNameChanged(string oldValue, string newValue)
+        {
+            Console.WriteLine("name changed from {0} to {1}", oldValue, newValue);
         }
 
         private static void Immutable()

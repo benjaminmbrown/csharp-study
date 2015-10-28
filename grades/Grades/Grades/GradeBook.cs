@@ -53,8 +53,6 @@ namespace Grades
            // throw new NotImplementedException();
         }
 
-  
-
         public void AddGrade(float grade)
         {
             //Double and float types
@@ -68,18 +66,29 @@ namespace Grades
       
         }
 
-        private string _name;
+        private string _name;//this is used inside set method 
 
         public string Name
         {
-            get { return _name.ToUpper()}
+            get { return _name.ToUpper(); }
             set { //prevent empty string here
                 if (!String.IsNullOrEmpty(value))
                 {
+                    var oldValue = _name;
                     _name = value;
+                    if(NameChanged != null)
+                    {
+                        NameChanged(oldValue, value);
+                    }
+                   
+
+                   
                 }
             }
         }
+
+        //create public field of namechangeddelage
+        public NameChangedDelegate NameChanged;//another piece of state that we can invoke wherever we need
 
         private List<float> grades;
 
