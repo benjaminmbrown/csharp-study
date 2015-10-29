@@ -154,13 +154,15 @@ namespace Grades
             GradeStatistics stats = book.ComputeStatistics();
 
             //using delegate - this will later be triggered any time the name changes later.
-            book.NameChanged = new NameChangedDelegate(OnNameChanged);
+          //  book.NameChanged = new NameChangedDelegate(OnNameChanged);
 
             //alternate method : multi cast delegate
             //multiple subscribers to execute when the event occurs
             book.NameChanged += OnNameChanged;
             book.NameChanged += OnNameChanged2;
 
+            //can unsubscribe from this event
+           // book.NameChanged -= OnNameChanged2;
 
             book.Name = "changed name";
 
@@ -171,14 +173,14 @@ namespace Grades
             Console.WriteLine("Highest" + stats.HighestGrade);
         }
 
-        private static void OnNameChanged2(string oldValue, string newValue)
+        private static void OnNameChanged2(object sender, NameChangedEventArgs args)
         {
-            Console.WriteLine("+++");
+            Console.WriteLine("name changing");
         }
 
-        public static void OnNameChanged(string oldValue, string newValue)
+        private static void OnNameChanged(object sender, NameChangedEventArgs args)
         {
-            Console.WriteLine("name changed from {0} to {1}", oldValue, newValue);
+            Console.WriteLine("name changed from {0} to {1}",  args.OldValue, args.NewValue);
         }
 
         private static void Immutable()

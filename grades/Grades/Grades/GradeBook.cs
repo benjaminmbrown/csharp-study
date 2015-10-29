@@ -72,13 +72,20 @@ namespace Grades
         {
             get { return _name.ToUpper(); }
             set { //prevent empty string here
-                if (!String.IsNullOrEmpty(value))
+                if (_name != value)
                 {
                     var oldValue = _name;
                     _name = value;
                     if(NameChanged != null)
                     {
-                        NameChanged(oldValue, value);
+                        //NameChanged(oldValue, value);
+
+                        //changes to make this compatible as an event
+                        NameChangedEventArgs args = new NameChangedEventArgs();
+                        args.OldValue = oldValue;
+                        args.NewValue = value;
+                        //"the name is changing I'm the sender (this), and here are the arguments
+                        NameChanged(this, args);
                     }
                    
 
@@ -88,7 +95,7 @@ namespace Grades
         }
 
         //create public field of namechangeddelage
-        public NameChangedDelegate NameChanged;//another piece of state that we can invoke wherever we need
+        public event NameChangedDelegate NameChanged;//another piece of state that we can invoke wherever we need
 
         private List<float> grades;
 
